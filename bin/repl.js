@@ -10,6 +10,7 @@ program
   .option('-s, --start', 'start chrome auromatically and wait for debugger', Boolean, false)
   .option('-c, --canary', 'prefer canary over stable chrome', Boolean, false)
   .option('-w, --websocket <url>', 'connect to websocket url instead of first tab in the list', String)
+  .option('-f, --outputfile <file name>', 'the file output name', String)
   .parse(process.argv);
 
 
