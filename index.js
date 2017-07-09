@@ -292,10 +292,9 @@ ChromeREPL.prototype = {
         var prefix = "> ".blue; */
         var messageLevel = message.message.level;
         var messageText = message.message.text;
-        io.emit('log', messageText);
+        io.emit('log', message.message);
         if (messageLevel === 'info') {
-          log.info(messageText);
-          
+          log.info(messageText);          
           messageText = messageText.blue;
         } else if (messageLevel === 'warn') {
           log.warn(messageText);

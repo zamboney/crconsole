@@ -6,6 +6,11 @@
 </head>
 
 <body>
+
+    <div>
+        Filter: <input placeholder="insert text" id='filterQuery' type="text">
+    </div>
+
     <div id="main">
 
     </div>
@@ -15,11 +20,25 @@
     <script>
         $(function () {
             var socket = io();
-            socket.on('log', function(msg){
-                $('#main').prepend($('<p>').text(moment().format('LTS') + ' ===> ' + msg));
+            socket.on('log', function (msg) {
+
+                var filterQuery = $('#filterQuery').val();
+
+                if (!filterQuery || (filterQuery.indexOf(msg.text) >= 0)) {
+                    var color;
+                    if (msg.level === 'info') {
+                        color = 'blue';
+                    } else if (msg.level  === 'warn') {
+                        color = 'yellow';
+                    } else if (msg.level  === 'error') {
+                        color = 'red';
+                    }
+
+                    $('#main').prepend($(`<p style="color: ${color};">`).text(moment().format('LTS') + ' ===> ' + msg.text));
+
+                }
             });
         });
-
     </script>
 </body>
 
