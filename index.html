@@ -24,7 +24,7 @@
 
                 var filterQuery = $('#filterQuery').val();
 
-                if (!filterQuery || (filterQuery.indexOf(msg.text) >= 0)) {
+                if (!filterQuery || (msg.text && (msg.text.indexOf(filterQuery) >= 0))) {
                     var color;
                     if (msg.level === 'info') {
                         color = 'blue';
