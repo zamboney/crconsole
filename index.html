@@ -24,7 +24,7 @@
 
                 var filterQuery = $('#filterQuery').val();
 
-                if (!filterQuery || (msg.text && (msg.text.indexOf(filterQuery) >= 0))) {
+                if (msg.level === 'error' || !filterQuery || (msg.text && (msg.text.indexOf(filterQuery) >= 0))) {
                     var color;
                     if (msg.level === 'info') {
                         color = 'blue';
@@ -35,7 +35,6 @@
                     }
 
                     $('#main').prepend($(`<p style="color: ${color};">`).text(moment().format('LTS') + ' ===> ' + msg.text));
-
                 }
             });
         });
